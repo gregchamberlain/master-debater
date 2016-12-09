@@ -24,6 +24,7 @@ app.get('/test', (req, res) => {
 
 io.on('connection', socket => {
   console.log('someone connected');
+  socket.on('disconnect', () => console.log('someone disconnected'));
   socket.on('join room', name => {
     socket.join(name);
   });

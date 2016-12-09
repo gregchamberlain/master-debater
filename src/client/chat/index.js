@@ -25,7 +25,7 @@ class Chat extends Component {
   }
 
   componentWillUnmount() {
-    this.socket.emit('leave room', this.props.room);
+    this.socket.disconnect();
   }
 
   send = text => {

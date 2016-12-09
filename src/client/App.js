@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import update from 'immutability-helper';
 
-import Chat from './chat';
+import Room from './chat/Rooms.js';
 
 const App = () => (
   <div style={{display: 'flex'}}>
-      <Chat room="test1" />
-      <Chat room="test2" />
-      <Chat room="test3" />
+      <Room />
   </div>
 );
 
