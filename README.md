@@ -1,11 +1,11 @@
 # React Apollo Fullstack Skeleton
-
+a
 This skeleton project allows for quick and easy development of fullstack applications with React and apollo graphql. What is all included?
-
+apple
 - Babel for ES6, stage-0 syntax
 - Setup development environment
 - Preset production build tools
-
+oranges 
 **Development**
 
 `npm run dev`
