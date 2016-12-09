@@ -23,8 +23,8 @@ app.get('/test', (req, res) => {
 });
 
 io.on('connection', socket => {
-  console.log('someone connected');
-  socket.on('disconnect', () => console.log('someone disconnected'));
+  console.log(socket.id, 'connected!');
+  socket.on('disconnect', () => console.log(socket.id, 'disconnected!'));
   socket.on('join room', name => {
     socket.join(name);
   });
@@ -40,6 +40,7 @@ io.on('connection', socket => {
 
   socket.join('test');
   socket.on('send message', (message, room) => {
+    message.timestamp = new Date().toString();
     io.to(room).emit(`receive message`, message);
   });
 });

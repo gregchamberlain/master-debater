@@ -21,6 +21,7 @@ class Chat extends Component {
       this.setState(update(this.state, {
         messages: { $push: [message] }
       }));
+      this.refs.chat.scrollTop = this.refs.chat.scrollHeight;
     });
   }
 
@@ -36,8 +37,10 @@ class Chat extends Component {
     return (
       <div>
         <h1>Room {this.props.room}</h1>
+        <div style={{ overflow: 'auto', height: 300, backgroundColor: '#ccc'}} ref="chat">
+          <MessageList messages={this.state.messages} />
+        </div>
         <MessageForm onSend={this.send} />
-        <MessageList messages={this.state.messages} />
       </div>
     );
   }
