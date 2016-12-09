@@ -24,9 +24,22 @@ app.get('/test', (req, res) => {
 
 io.on('connection', socket => {
   console.log('someone connected');
-  socket.join('test room');
-  socket.on('new message', data => {
-    io.to('test room').emit('receive message', data);
+  socket.on('join room', name => {
+    socket.join(name);
+  });
+
+  socket.on('leave room', name => {
+    socket.leave(name);
+  });
+
+  socket.on('change room', (room1, room2) => {
+    socket.leave(room1);
+    socket.join(room2);
+  });
+
+  socket.join('test');
+  socket.on('send message', (message, room) => {
+    io.to(room).emit(`receive message`, message);
   });
 });
 
